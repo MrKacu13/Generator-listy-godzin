@@ -57,13 +57,3 @@ function printDiv(){
 
     setTimeout(function(){newWin.close();},10);
 }
-function ObliczSpalanie(){
-    var spalone = document.getElementById("SpalonePaliwo").value;
-    var km = document.getElementById("Kilometry").value;
-    var wynik = (spalone/km)*100;
-    if(isNaN(wynik)){
-        document.getElementById("Wyniki").innerHTML = "Niepoprawne dane!";
-        return;
-    }
-    return;
-}
