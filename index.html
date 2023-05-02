@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <title>Kalkulator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="custom.css">
+        <script src="jquery-3.6.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js" type="text/javascript"></script>
+    </head>
+    <body onload="$(GenerujTabele)">
+        <div class="containter">
+            <div class="container-fluid bg-dark text-white">
+                <div class="p-4">
+                    <h1 class="display-4">Kalkulator roboczogodzin</h1>
+                    <p>Generator listy godzin do wydruku bądź zapisu w PDF</p>
+                    <p class="badge dupa"></p>
+                </div>
+            </div>
+            <div class="jumbotron bg-white" onchange="$(ObliczGodziny)">
+                <div class="row">
+                    <div class="col p-2 custom-box">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="d-flex flex-column">
+                                    <div class="row p-2">
+                                        <div class="col">
+                                            <sub>Nazwa firmy:</sub>
+                                            <input class="form-control text-center" type="text" id="nazwafirmy" placeholder="wprowadź dane...">
+                                        </div>
+                                        <div class="col">
+                                            <sub>Imię i nazwisko:</sub>
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input class="form-control text-center" type="text" id="imienazwisko" placeholder="wprowadź dane...">
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table-hover" id="roboczogodziny">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="text-center">Dzień mc-a</th>
+                                                    <th class="text-center">Rozpoczęcie pracy</th>
+                                                    <th class="text-center">Zakończenie pracy</th>
+                                                    <th class="text-center">Liczba godzin</th>
+                                                </tr>
+                                                <tr>
+                                                    <td id="dane-pracownika" colspan="2" class="btn-light text-center">-------------</td>
+                                                    <td id="suma-godzin" colspan="2" class="btn-light text-center">-------------</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="p-2">
+                                        <button type="button" class="btn btn-outline-dark" onclick="$(printDiv)">Generuj wydruk</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm" style="border-left: 1px solid lightgrey;">
+                                <h2 id="slider">Pozostałe informacje</h2>
+                                <div id="slider-content">
+                                <p>Lorem ipsum dolor sit amet. Sit quam fuga et omnis enim et blanditiis fugiat sit sequi atque et amet voluptate in incidunt quam qui quidem explicabo. Sed facere nobis non autem autem et quam voluptatem nam illo recusandae hic voluptates beatae? Id laudantium placeat ut possimus aliquid aut consequatur doloribus. Id mollitia officia non nulla quam ut enim libero in dolor ipsam rem voluptates quia. </p>
+                                <p>Sit libero beatae qui tempora ipsum ut aspernatur libero et perferendis nihil a suscipit numquam. Eum voluptatum officia ea ipsa ipsam At voluptas autem. Ut eligendi voluptatibus ea laudantium maxime quo quisquam galisum sed excepturi maxime. </p>
+                                <p>Qui error eveniet et exercitationem consectetur 33 aliquam possimus est nihil impedit At voluptatibus laudantium quo itaque autem est beatae voluptas. Qui magni placeat ut debitis laboriosam non expedita minus. Quo voluptate odit qui voluptatibus praesentium aut optio placeat aut necessitatibus accusamus in consequatur aliquid eos consequatur quod cum ipsam dolores. </p>
+                                
+                                <p>Lorem ipsum dolor sit amet. Sit quam fuga et omnis enim et blanditiis fugiat sit sequi atque et amet voluptate in incidunt quam qui quidem explicabo. Sed facere nobis non autem autem et quam voluptatem nam illo recusandae hic voluptates beatae? Id laudantium placeat ut possimus aliquid aut consequatur doloribus. Id mollitia officia non nulla quam ut enim libero in dolor ipsam rem voluptates quia. </p>
+                                <p>Sit libero beatae qui tempora ipsum ut aspernatur libero et perferendis nihil a suscipit numquam. Eum voluptatum officia ea ipsa ipsam At voluptas autem. Ut eligendi voluptatibus ea laudantium maxime quo quisquam galisum sed excepturi maxime. </p>
+                                <p>Qui error eveniet et exercitationem consectetur 33 aliquam possimus est nihil impedit At voluptatibus laudantium quo itaque autem est beatae voluptas. Qui magni placeat ut debitis laboriosam non expedita minus. Quo voluptate odit qui voluptatibus praesentium aut optio placeat aut necessitatibus accusamus in consequatur aliquid eos consequatur quod cum ipsam dolores. </p>
+
+                                <p>Lorem ipsum dolor sit amet. Sit quam fuga et omnis enim et blanditiis fugiat sit sequi atque et amet voluptate in incidunt quam qui quidem explicabo. Sed facere nobis non autem autem et quam voluptatem nam illo recusandae hic voluptates beatae? Id laudantium placeat ut possimus aliquid aut consequatur doloribus. Id mollitia officia non nulla quam ut enim libero in dolor ipsam rem voluptates quia. </p>
+                                <p>Sit libero beatae qui tempora ipsum ut aspernatur libero et perferendis nihil a suscipit numquam. Eum voluptatum officia ea ipsa ipsam At voluptas autem. Ut eligendi voluptatibus ea laudantium maxime quo quisquam galisum sed excepturi maxime. </p>
+                                <p>Qui error eveniet et exercitationem consectetur 33 aliquam possimus est nihil impedit At voluptatibus laudantium quo itaque autem est beatae voluptas. Qui magni placeat ut debitis laboriosam non expedita minus. Quo voluptate odit qui voluptatibus praesentium aut optio placeat aut necessitatibus accusamus in consequatur aliquid eos consequatur quod cum ipsam dolores. </p>
+
+                                <p>Lorem ipsum dolor sit amet. Sit quam fuga et omnis enim et blanditiis fugiat sit sequi atque et amet voluptate in incidunt quam qui quidem explicabo. Sed facere nobis non autem autem et quam voluptatem nam illo recusandae hic voluptates beatae? Id laudantium placeat ut possimus aliquid aut consequatur doloribus. Id mollitia officia non nulla quam ut enim libero in dolor ipsam rem voluptates quia. </p>
+                                <p>Sit libero beatae qui tempora ipsum ut aspernatur libero et perferendis nihil a suscipit numquam. Eum voluptatum officia ea ipsa ipsam At voluptas autem. Ut eligendi voluptatibus ea laudantium maxime quo quisquam galisum sed excepturi maxime. </p>
+                                <p>Qui error eveniet et exercitationem consectetur 33 aliquam possimus est nihil impedit At voluptatibus laudantium quo itaque autem est beatae voluptas. Qui magni placeat ut debitis laboriosam non expedita minus. Quo voluptate odit qui voluptatibus praesentium aut optio placeat aut necessitatibus accusamus in consequatur aliquid eos consequatur quod cum ipsam dolores. </p>
+                                </div>
+                                <div class="form-group">
+                                    <sub>Język/Language:</sub>
+                                    <select class="form-control" id="lang">
+                                        <option>Polski (pl-PL)</option>
+                                        <option>English (en-EN)</option>
+                                        <option>Deutsch (de-DE)</option>
+                                      </select>
+                                </div>
+                                <div title="Opcja jeszcze nieaktywna" id="calc-switch" class="p-3" style="box-shadow: 0 0 10px lightgray; filter: opacity(50%);">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="switch1" disabled>
+                                        <label class="custom-control-label" for="switch1">Opcje zaawansowane</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 text-center custom-box">
+                <span>Projekt i wykonanie: <strong>Kacper Popecki</strong></span></br>
+                <span>Wszelkie prawa zastrzeżone. Copryright &copy; 2023</span>
+            </div>
+        </div>
+    </body>
+</html>
